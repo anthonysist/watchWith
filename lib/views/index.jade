@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+	head
+		title= 'Watch With'
+		script(src="bower_components/angular/angular.js")
+		script(src="socket.io/socket.io.js")
+		link(rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+		link(rel="stylesheet" href="css/main.css")
+
+	body
+
+		h1 Hello Htere!
+
+		script.
+			var socket = io.connect();
+			socket.on('news', function (data) {
+				console.log(data);
+				socket.emit('my other event', {my: 'data'});
+			});
