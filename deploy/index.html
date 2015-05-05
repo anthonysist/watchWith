@@ -8,13 +8,35 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
-    <h1>Hello Htere!</h1>
-    <script>
-      var socket = io.connect();
-      socket.on('news', function (data) {
-      	console.log(data);
-      	socket.emit('my other event', {my: 'data'});
-      });
-    </script>
+    <div class="container-fluid vidWrapper">
+      <div class="row">
+        <video width="100%" height="auto" autoplay loop>
+          <source src="images/videos/splash.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+    <div class="splash">
+      <h1>What's Everyone Watching?</h1>
+      <h2>Watch With Them</h2>
+    </div>
+    <div class="whosWatching">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 text-center">4 people are watching</div>
+          <div class="col-xs-12-col-md-6 text-center">THIS VIDEO</div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6 text-center">
+          <button type="button" class="btn btn-default btn-lg">Join Someone</button>
+        </div>
+        <div class="col-xs-12 col-md-6 text-center">
+          <button type="button" class="btn btn-default btn-lg">Start Watching</button>
+        </div>
+      </div>
+    </div>
+    <script></script>
   </body>
 </html>

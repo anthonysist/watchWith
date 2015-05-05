@@ -9,11 +9,26 @@ html(lang="en")
 
 	body
 
-		h1 Hello Htere!
+		div.container-fluid.vidWrapper
+			div.row
+				video(width="100%" height="auto" autoplay loop)
+					source(src="images/videos/splash.mp4" type="video/mp4")
+		div.splash
+			h1 What's Everyone Watching?
+			h2 Watch With Them
 
+		div.whosWatching
+			div.container
+				div.row
+					div.col-xs-12.col-md-6.text-center
+						| 4 people are watching
+					div.col-xs-12-col-md-6.text-center
+						| THIS VIDEO
+
+		div.container
+			div.row
+				div.col-xs-12.col-md-6.text-center
+					button.btn.btn-default.btn-lg(type="button") Join Someone
+				div.col-xs-12.col-md-6.text-center
+					button.btn.btn-default.btn-lg(type="button") Start Watching
 		script.
-			var socket = io.connect();
-			socket.on('news', function (data) {
-				console.log(data);
-				socket.emit('my other event', {my: 'data'});
-			});

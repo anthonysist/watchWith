@@ -52,7 +52,7 @@ gulp.task('sass', function () {
 
 
 gulp.task('default', function() {
-    gulp.start('jadeCompile', 'sass', 'server', 'bower');
+    gulp.start('jadeCompile', 'server', 'bower');
     //have gulp watch for changes to the app.js file here, restart server if it does
     gulp.watch('./app.js', ['server']);
 
@@ -60,7 +60,7 @@ gulp.task('default', function() {
     gulp.watch('./lib/views/*.jade', ['jadeCompile']);
 
     // Watch sass files
-    gulp.watch('./lib/styles/*.jade', ['sass']);
+    gulp.watch('./lib/styles/*.scss', ['sass']);
 
 })
 

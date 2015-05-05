@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+    head
+        title= 'Watch With'
+        script(src="bower_components/angular/angular.js")
+
+        script(src="scripts/watchThisApp.js")
+        script(src="scripts/playerModule.js")
+        script(src="socket.io/socket.io.js")
+        script(src="scripts/socketService.js")
+        link(rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+        link(rel="stylesheet" href="css/theater.css")
+
+    body(ng-app="watchThisApp")
+        div.container-fluid(ng-controller="mainController as vm")
+            div.row
+                div.col-xs-12.col-md-6
+                    div#player
+                div.col-xs-12.col-md-6
+                    button.btn.btn-primary.btn-lg(ng-click="vm.playVideo()") Play Video

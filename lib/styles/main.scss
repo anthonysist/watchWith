@@ -1,3 +1,32 @@
-h1 {
-  font-size: 70px;
+body{
+
+  .vidWrapper {
+     overflow: hidden;
+      height: 475px;
+
+      video {
+
+          width:  100%;
+
+      }
+  }
+
+  .splash {
+    z-index: 2;
+    position: absolute;
+    margin: 0 auto;
+    width: 100%;
+    top: 200px;
+
+      h1 {
+          font-size: 48px;
+          color: #ffffff;
+          text-align: center;
+      }
+
+      h2 {
+          color: #ffffff;
+          text-align: center;
+      }
+  }
 }
