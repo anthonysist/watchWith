@@ -1,6 +1,4 @@
-/**
- * Created by Anthony on 4/11/2015.
- */
+
 
     ///Required Modules
 var express = require('express');
@@ -21,16 +19,35 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/deploy/index.html');
 });
 
-app.get('/theater', function (req, res) {
-    res.sendFile(__dirname + '/deploy/theater.html');
-});
 
 
 //socket stuff, move eventually
+
+var currentUsers = [];
+
+
 io.on('connection', function (socket) {
+    console.log(socket.id);
+
+    io.sockets.emit('updateUserData', currentUsers);
 
     socket.on('playVideo', function (data) {
-        socket.broadcast.emit('play', { });
+
+        io.to('anthony').emit('play');
     });
+
+    socket.on('newUserJoin', function (data) {
+        currentUsers.push(data);
+        console.log(socket.id);
+        rooms.push({'name' : data.user, 'id' : socket.id})
+        socket.join(data.user);
+        io.sockets.emit('updateUserData', currentUsers);
+    });
+
+    socket.on('joinRoom', function (data) {
+        console.log(data)
+        socket.join(data);
+        io.sockets.emit('roomJoined');
+    })
 });
 

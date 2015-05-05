@@ -22,9 +22,10 @@ html(lang="en")
 
 		div.whosWatching
 			div.container.well
-				div.row
-					div.col-xs-12.col-md-6.text-center
-						| 4 people are watching
+				div.row(ng-repeat="user in vm.currentUsers")
+					div.col-xs-12.col-md-6.text-center(ng-click="vm.joinRoom(user.user)")
+						a(href="/theater" )
+							| {{user.user}}
 					div.col-xs-12-col-md-6.text-center
 						| THIS VIDEO
 
@@ -33,12 +34,13 @@ html(lang="en")
 				div.col-xs-12.col-md-4.text-center Join Someone
 				div.col-xs-12.col-md-4.text-center Or
 				div.col-xs-12.col-md-4.text-center
-					button.btn.btn-default.btn-lg(type="button" ng-click="showField = true") Start Watching
+					button.btn.btn-default.btn-lg(type="button" ng-click="showField = true" ) Start Watching
 					div.row
 						div.col-xs-12(ng-show="showField == true")
 							div.input-group
-								input.form-control(type='text', placeholder='Enter your Name')
+								input.form-control(type='text', placeholder='Enter your Name' ng-model="vm.user.name")
 								span.input-group-btn
-									button.btn.btn-default(type='button' ng-click="vm.startRoom()") Go Watch!
+									a(href="/theater")
+										button.btn.btn-default(type='button' ng-click="vm.startRoom(vm.user)") Go Watch!
 
 

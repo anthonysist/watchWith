@@ -1,6 +1,3 @@
-/**
- * Created by anthony on 5/4/15.
- */
 
 (function() {
     //initialize player
