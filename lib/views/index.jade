@@ -4,10 +4,13 @@ html(lang="en")
 		title= 'Watch With'
 		script(src="bower_components/angular/angular.js")
 		script(src="socket.io/socket.io.js")
+		script(src="scripts/watchThisApp.js")
+		script(src="scripts/playerModule.js")
+		script(src="scripts/socketService.js")
 		link(rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css")
 		link(rel="stylesheet" href="css/main.css")
 
-	body
+	body(ng-app="watchThisApp" ng-controller="mainController as vm")
 
 		div.container-fluid.vidWrapper
 			div.row
@@ -18,7 +21,7 @@ html(lang="en")
 			h2 Watch With Them
 
 		div.whosWatching
-			div.container
+			div.container.well
 				div.row
 					div.col-xs-12.col-md-6.text-center
 						| 4 people are watching
@@ -27,8 +30,15 @@ html(lang="en")
 
 		div.container
 			div.row
-				div.col-xs-12.col-md-6.text-center
-					button.btn.btn-default.btn-lg(type="button") Join Someone
-				div.col-xs-12.col-md-6.text-center
-					button.btn.btn-default.btn-lg(type="button") Start Watching
-		script.
+				div.col-xs-12.col-md-4.text-center Join Someone
+				div.col-xs-12.col-md-4.text-center Or
+				div.col-xs-12.col-md-4.text-center
+					button.btn.btn-default.btn-lg(type="button" ng-click="showField = true") Start Watching
+					div.row
+						div.col-xs-12(ng-show="showField == true")
+							div.input-group
+								input.form-control(type='text', placeholder='Enter your Name')
+								span.input-group-btn
+									button.btn.btn-default(type='button' ng-click="vm.startRoom()") Go Watch!
+
+

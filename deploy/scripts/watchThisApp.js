@@ -14,13 +14,30 @@
         getPlayer.loadYoutubeApi();
 
         //Start Socket Connection
-        connectIo.socketInit();
+        var socket = connectIo.socketInit();
 
         var vm = this;
 
-        vm.playVideo = function() {
-            console.log(getPlayer.startVideo())
-            getPlayer.startVideo()
+        vm.playVideo = playVideo;
+        vm.startRoom = startRoom;
+
+        function playVideo () {
+            socket.emit('playVideo', { play: 'video'});
+            getPlayer.startVideo();
         }
+
+        function startRoom () {
+
+        }
+
+        //////Socket Stuff//////
+
+        //play button//
+        socket.on('play', function() {
+            console.log('play button hit');
+            getPlayer.startVideo();
+        })
+
+
     }
 })();

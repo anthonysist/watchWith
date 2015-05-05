@@ -23,15 +23,14 @@
         // 3. This function creates an <iframe> (and YouTube player)
         //    after the API code downloads.
         var player;
-        function onYouTubeIframeAPIReady() {
+        window.onYouTubeIframeAPIReady = function () {
             console.log('hit')
             player = new YT.Player('player', {
                 height: '390',
                 width: '640',
-                videoId: 'M7lc1UVf-V',
+                videoId: 'eVo3LbVWjWc',
                 events: {
-                    'onReady': onPlayerReady,
-                    'onStateChange': onPlayerStateChange
+
                 }
             });
         }
@@ -55,8 +54,7 @@
             player.stopVideo();
         }
         this.startVideo = function startVideo () {
-            console.log(player
-            )
+            player.playVideo();
         }
 
 
